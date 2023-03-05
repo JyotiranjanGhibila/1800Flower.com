@@ -25,7 +25,7 @@ import {
   Flex,
   Circle,
   Box,
-  Image,
+  img,
   Badge,
   useColorModeValue,
   Icon,
@@ -37,8 +37,8 @@ import { FiShoppingCart } from "react-icons/fi";
 
 const data = {
   isNew: true,
-  imageURL:
-    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
+  imgURL:
+    "https://imgs.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
   name: "Wayfarer Classic",
   price: 4.5,
   rating: 4.2,
@@ -79,7 +79,7 @@ export const Products = () => {
             justifyContent="center"
           >
             <Box
-              bg={useColorModeValue("white", "gray.800")}
+              bg={"white"}
               maxW="sm"
               borderWidth="1px"
               rounded="lg"
@@ -96,7 +96,7 @@ export const Products = () => {
                 />
               )}
 
-              <Image
+              <img
                 src={el.img}
                 alt={`Picture of ${data.name}`}
                 roundedTop="lg"
@@ -159,7 +159,7 @@ export const Products = () => {
                   </Box>
                   <Box
                     fontSize="2xl"
-                    color={useColorModeValue("gray.800", "white")}
+                    color={"white"}
                     textAlign="right"
                   >
                     <Box

@@ -1,11 +1,11 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Products } from "./pages/Products";
+import { Home } from "./Pages/Home";
+import { Products } from "./Pages/Products";
 import { ReqAuth } from "./HOC/ReqAuth";
-import { Cart } from "./pages/Cart";
-import { Login } from "./pages/Login";
-import Signup from "./pages/Signup";
+import { Cart } from "./Pages/Cart";
+import { Login } from "./Pages/Login";
+import Signup from "./Pages/Signup";
 import Navbar from "./Components/Navbar";
 
 function App() {
