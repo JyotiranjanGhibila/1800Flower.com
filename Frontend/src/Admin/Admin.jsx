@@ -5,11 +5,7 @@ import AdminNavSideBar from './AdminNavSideBar'
 const Admin = () => {
   return (
     <div>
-       
-        <AdminNavSideBar  />
-    
-       
-
+          <AdminNavSideBar  />
     </div>
   )
 }
