@@ -17,7 +17,7 @@ import React, { useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineRight } from "react-icons/ai";
 // import { Link as RouterLink } from "react-router-dom";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const DrawerBtn = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,13 +45,13 @@ const DrawerBtn = () => {
         <DrawerContent bg="#65388b" color="#fff">
           <DrawerCloseButton />
           <DrawerHeader>
-            <Link href="/" onClick={onClose}>
+            <Link to="/" onClick={onClose}>
               1800 Flower
             </Link>
           </DrawerHeader>
 
           <DrawerBody>
-            <Link href="/newvalentine">
+            <Link to="/newvalentine">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -65,7 +65,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link href={"/flowers"}>
+            <Link to={"/flowers"}>
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -79,7 +79,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link href="/ocassion">
+            <Link to="/ocassion">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -93,7 +93,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link href="/plants">
+            <Link to="/plants">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -107,7 +107,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link href="/gifts">
+            <Link to="/gifts">
               <Flex
                 p="2"
                 justifyContent="space-between"

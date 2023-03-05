@@ -6,10 +6,12 @@ import { ReqAuth } from "./HOC/ReqAuth";
 import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
 import Signup from "./pages/Signup";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
