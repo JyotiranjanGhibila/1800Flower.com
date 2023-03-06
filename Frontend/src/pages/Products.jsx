@@ -1,25 +1,8 @@
-import { Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { Button, Heading, Image, SimpleGrid, Spinner } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart, getProductsData } from "./../store/App/app.actions";
-
-// export const Products = () => {
-
-//   return (
-//     <div>
-//       <Heading>Men's Page</Heading>
-//       {products.map((el, ind) => (
-//         <HStack key={ind} my={5}>
-//           <Heading as={"h6"} key={ind}>
-//             {el.name}
-//           </Heading>
-//           <Button onClick={() => handleAddToCart(el)}>Add To Cart</Button>
-//         </HStack>
-//       ))}
-//     </div>
-//   );
-// };
+import { addToCart, getProductsData,htol,ltoh } from "./../store/App/app.actions";
 
 import {
   Flex,
@@ -49,15 +32,52 @@ export const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, isError, products } = useSelector((store) => store.app);
+  const [page, setPage] = useState([]);
+  const loadmore = async () => {
+    const res = await fetch(
+      `https://wicked-long-underwear-slug.cyclic.app/products?limit=4`
+    );
+    const posts = await res.json();
+    setPage((val) => [...val, ...posts]);
+  };
+  const fd=async()=>{
+    return fetch(`https://wicked-long-underwear-slug.cyclic.app/products?limit=12`)
+    .then((res)=>res.json())
+  }
+  const htol = async () => {
+    let res = await fetch(
+      `https://wicked-long-underwear-slug.cyclic.app/products/?sort=price&order=1&limit=12`
+    );
+    let data = await res.json();
+    setPage(data);
+  };
+  const ltoh = async () => {
+    let res = await fetch(
+      `https://wicked-long-underwear-slug.cyclic.app/products?sort=price&order=-1&limit=12`
+    );
+    let data = await res.json();
+    setPage(data);
+  };
 
   useEffect(() => {
-    dispatch(getProductsData());
+    
+    hfd()
   }, []);
-
+  
+ const hfd=async()=>{
+  try{
+    let d=await fd()
+    setPage(d)
+  }catch(err){
+    console.log(err)
+  }
+ }
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     navigate("/cart");
   };
+   
+
   console.log(isLoading, isError, products);
 
   if (isLoading) return <Spinner />;
@@ -67,8 +87,30 @@ export const Products = () => {
 
   return (
     <>
-      <SimpleGrid columns={[1, 2, 3]}>
-        {products.map((el, ind) => (
+    <Box display={"flex"} gap={"20px"} color={"white"} mt={"30px"}>
+        <Button
+          backgroundColor={"#65388B"}
+          ml={["18%", "25%", "35%", "42%"]}
+          onClick={() => htol()}
+          _hover={{
+            backgroundColor: "#65388B",
+          }}
+        >
+          Low to High
+        </Button>
+        <Button
+          backgroundColor={"#65388B"}
+          onClick={() => ltoh()}
+          _hover={{
+            backgroundColor: "#65388B",
+          }}
+        >
+          High to Low
+        </Button>
+      </Box>
+    
+      <SimpleGrid columns={[1, 2, 4]}>
+        {page.map((el, ind) => (
           <SimpleGrid
             key={ind}
             minChildWidth="120px"
@@ -85,6 +127,8 @@ export const Products = () => {
               rounded="lg"
               shadow="lg"
               position="relative"
+              w={'25'}
+              h={'60vh'}
             >
               {data.isNew && (
                 <Circle
@@ -96,10 +140,11 @@ export const Products = () => {
                 />
               )}
 
-              <img
+              <Image
                 src={el.img}
                 alt={`Picture of ${data.name}`}
-                roundedTop="lg"
+               
+                h={'auto'}
               />
 
               <Box p="6">
@@ -157,11 +202,7 @@ export const Products = () => {
                     <BsStarFill />
                     <BsStarHalf />
                   </Box>
-                  <Box
-                    fontSize="2xl"
-                    color={"white"}
-                    textAlign="right"
-                  >
+                  <Box fontSize="2xl" color={"white"} textAlign="right">
                     <Box
                       as="span"
                       color={"gray.600"}
@@ -177,6 +218,22 @@ export const Products = () => {
           </SimpleGrid>
         ))}
       </SimpleGrid>
+
+      <Button
+        backgroundColor={"#65388B"}
+        // ml={["21%", "35%", "45%", "47%"]}
+        m={'auto'}
+        color="white"
+        onClick={loadmore}
+        mt={"10px"}
+        mb={"10px"}
+        _hover={{
+          backgroundColor: "#65388B",
+        }}
+      >
+        {" "}
+        Load More
+      </Button>
     </>
   );
 };

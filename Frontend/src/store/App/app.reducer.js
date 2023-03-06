@@ -18,6 +18,12 @@ export const reducer = (state = init, { type, payload }) => {
     case types.GET_PRODUCTS_DATA_FAILURE: {
       return { ...state, isLoading: false, isError: true };
     }
+    case types.HIGH_TO_LOW:{
+      return {...state,isLoading:false,products:payload,isError:false};
+    }
+    case types.LOW_TO_HIGH:{
+      return {...state,isLoading:false,products:payload,isError:false}
+    }
     default:
       return state;
   }

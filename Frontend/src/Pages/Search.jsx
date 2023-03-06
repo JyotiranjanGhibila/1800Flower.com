@@ -21,6 +21,7 @@ import {
   Radio,
   Flex,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 const Search = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
@@ -42,29 +43,26 @@ const Search = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <RadioGroup
-        value={scrollBehavior}
-        onChange={setScrollBehavior}
-      ></RadioGroup>
       <Flex
-        mt={3}
+        mt={4}
         ref={btnRef}
         onClick={onOpen}
-        border={"1px solid #65388B"}
+        // border={"1px solid white"}
         h={"8"}
         w={"28%"}
-        m={"auto"}
+        mr={"10"}
         alignItems={"center"}
         gap={"10"}
         cursor="pointer"
       >
-        <Box ml={"4"}>
-          <BsSearch />
+        <Box m={"auto"} color={'white'} fontSize={"3xl"}>
+          <BsSearch width={'80'}/>
         </Box>
-
-        <Text color={"gray.500"}>Search</Text>
+{/* 
+        <Text color={"gray.500"}>Search</Text> */}
       </Flex>
       <Modal
+      
         onClose={onClose}
         finalFocusRef={btnRef}
         isOpen={isOpen}
@@ -90,8 +88,9 @@ const Search = () => {
                   data.map((el, i) => {
                     return (
                       <>
+                      <Link key={i} to="/products">
                         <Flex
-                          key={i}
+                          
                           alignItems={"center"}
                           justifyContent={"space-around"}
                           mt={"5"}
@@ -100,6 +99,7 @@ const Search = () => {
                           <Image src={el.img} w={"74px"} />
                           <Text w={"75%"}>{el.name}</Text>
                         </Flex>
+                        </Link>
                       </>
                     );
                   })}

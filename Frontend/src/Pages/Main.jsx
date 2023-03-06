@@ -2,7 +2,8 @@ import ReactStars from "react-stars";
 import React, { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import styles from "../styles/Index.module.css"
+// import styles from "../styles/Index.module.css"
+import styles from "../Styles/Index.module.css"
 import {
   Box,
   Center,
@@ -250,7 +251,7 @@ const aboutUs = [
   },
 ];
 
-export default function Home() {
+export const  Home=() =>{
   const [show, setShow] = useState(false);
   const { isOpen, onToggle } = useDisclosure();
 
@@ -272,9 +273,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.PNG" />
      
-      <div style={{ marginTop: "200px" }}>
+      <div >
         <div className={styles.banner1}>
           <img
+          alt="fdf"
             className={styles.im}
             style={{ width: "100%" }}
             src="https://i.postimg.cc/zXd9L2c8/Screenshot-378.png"
@@ -285,7 +287,7 @@ export default function Home() {
           <div className={styles.send}>
             {data.map((dat) => (
               <div style={{ textAlign: "center", width: "100%" }} key={dat.id}>
-                <img style={{ width: "100%" }} src={dat.image} />
+                <img alt="fg" style={{ width: "100%" }} src={dat.image} />
                 <p>{dat.title}</p>
               </div>
             ))}
@@ -331,7 +333,7 @@ export default function Home() {
           <div className={styles.send}>
             {comfort.map((dat) => (
               <div style={{ textAlign: "center", width: "100%" }} key={dat.id}>
-                <img style={{ width: "100%" }} src={dat.image} />
+                <img alt="gdhgd" style={{ width: "100%" }} src={dat.image} />
                 <p>{dat.title}</p>
               </div>
             ))}
@@ -341,6 +343,7 @@ export default function Home() {
         <div className={styles.twoimage}>
           <div>
             <img
+            alt="dfdsf"
               style={{ width: "100%" }}
               src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt3690a6c493dd6a6a/63f93ad7325d0044fe5f8eb0/harry-and-david-gift-baskets-gourmet-food-tier-spring-fy23.jpg?quality=60&auto=webp&optimize={medium}"
               
@@ -348,6 +351,7 @@ export default function Home() {
           </div>
           <div>
             <img
+            alt="dgsdf"
               style={{ width: "100%" }}
               src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltba5c5bb4aa42ed46/640247a0952945362ea1ac93/gifts-from-personalization-mall-tier-spring-fy23-v2.jpg?quality=60&auto=webp&optimize={medium}"
             />
@@ -361,7 +365,7 @@ export default function Home() {
             margin: "40px 0 40px 0",
           }}
         >
-          <img style={{ width: "78%" }} src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltf905a87a24f3679b/640249953b7399107f6bb47b/support-smile-farms-zone-10-banner-fy23.png?quality=70&auto=webp&optimize={medium}" />
+          <img alt="hfdg" style={{ width: "78%" }} src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltf905a87a24f3679b/640249953b7399107f6bb47b/support-smile-farms-zone-10-banner-fy23.png?quality=70&auto=webp&optimize={medium}" />
         </div>
      
         <div>
@@ -370,7 +374,7 @@ export default function Home() {
             <div>
               {trending.map((dat) => (
                 <div style={{ textAlign: "center" }} key={dat.id}>
-                  <img src={dat.image} />
+                  <img alt="fdfgh" src={dat.image} />
                   <p style={{ fontSize: "13px", textAlign: "left" }}>
                     {dat.title}
                   </p>
@@ -395,18 +399,18 @@ export default function Home() {
             margin: "0 0 40px 0",
           }}
         >
-          <img style={{ width: "90%" }} src="https://images.contentstack.io/v3/assets/blt89dbf1c763ec00a6/bltfa36f70965e48481/6222b7ed6f0333490a0e7fd1/1400x200_IMCBnr_NonMem2.jpg?quality=80&auto=webp&optimze={medium}" />
+          <img alt="ghg" style={{ width: "90%" }} src="https://images.contentstack.io/v3/assets/blt89dbf1c763ec00a6/bltfa36f70965e48481/6222b7ed6f0333490a0e7fd1/1400x200_IMCBnr_NonMem2.jpg?quality=80&auto=webp&optimze={medium}" />
         </div>
 
         <h1 className={styles.htagShare}>
-          <img src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt4661dd99d6401481/60184a440f1c0c1aa6f87986/instagram-icon.svg?quality=75&auto=webp&optimize={medium}" />
+          <img alt="fgfd" src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt4661dd99d6401481/60184a440f1c0c1aa6f87986/instagram-icon.svg?quality=75&auto=webp&optimize={medium}" />
           Share Your #MadeMeSmile Flowers Moment
         </h1>
         <div className={styles.divshare}>
           <div>
             {flowerMoment.map((dat) => (
               <div style={{ textAlign: "center" }} key={dat.id}>
-                <img src={dat.image} />
+                <img alt="fghdf" src={dat.image} />
               </div>
             ))}
           </div>
@@ -420,6 +424,7 @@ export default function Home() {
             {aboutUs.map((dat) => (
               <div key={dat.id}>
                 <img
+                alt="fgsdfg"
                   style={{
                     display: "flex",
                     margin: "auto",
@@ -469,6 +474,7 @@ export default function Home() {
             Powered by
           </span>
           <img
+          alt="dgs"
             className={styles.powerimage}
             src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltcf637a6e16efdb8e/5ea9acbed4b10d15d3e8cfb3/yotpo-logo.png?quality=70&auto=webp&optimize={medium}"
           />
@@ -480,7 +486,7 @@ export default function Home() {
             margin: "30px 0 40px 0",
           }}
         >
-          <img src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt40b361bd81392aa3/60145a6694a1800f61b51cde/FY20_Web_CEO_Banner_Desktop.jpg?quality=70&auto=webp&optimize={medium}"/>
+          <img  alt="fgs" src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt40b361bd81392aa3/60145a6694a1800f61b51cde/FY20_Web_CEO_Banner_Desktop.jpg?quality=70&auto=webp&optimize={medium}"/>
         </div>
         <Center>
           <Heading

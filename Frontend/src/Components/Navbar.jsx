@@ -9,7 +9,7 @@ import { GrUserAdmin } from "react-icons/gr";
 // import Link from "next/link";
 // import { signOut } from "firebase/auth";
 // import { auth } from "../../firebase/firebase-config";
-import styles from "../Styles/globals.css"
+import styles from "../Styles/globals.css";
 import { Button } from "@chakra-ui/react";
 import {
   Box,
@@ -23,22 +23,18 @@ import {
 import DrawerBtn from "./DrawerBtn";
 import { VscAccount } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
-// import { useSession, signOut } from "next-auth/react";
 import { Link } from "react-router-dom";
-
+import Search from "../Pages/Search";
 export default function Navbar() {
-  // const currentUser = useAuth();
-  // const { data } = useSession();
-  // console.log(session);
 
-  // const Logout = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     alert("Logout Successful");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  let userToken=localStorage.getItem("token")
+  console.log(userToken);
+
+  const handleLogout=()=>{
+    localStorage.removeItem("token")
+    window.location.reload()
+    window.location.href="/login"
+  }
 
   return (
     <>
@@ -136,25 +132,28 @@ export default function Navbar() {
       <Flex
         px="5"
         py="3"
-        bg="#65388b"s
-       
+        bg="#65388b"
         alignItems="center"
         justifyContent="space-between"
       >
         <HStack gap="3">
           <DrawerBtn />
-          
-            {/* <Heading color="#fff">1800-Flowers</Heading> */}
-          <Image src='https://i.postimg.cc/pLqmtY0m/Blossom-removebg-preview.png' w={'20'}/>
+
+          {/* <Heading color="#fff">1800-Flowers</Heading> */}
+          <Box w={['80px','90px','100px']}>
+            <Link to="/">
+              <Image src="https://i.postimg.cc/kMshvvtf/Blossom-3.png" />
+            </Link>
+          </Box>
         </HStack>
         <HStack gap="3" cursor="pointer">
-          <Input
+          {/* <Input
             width="300px"
             bg="#fff"
             placeholder="Search..."
             display={{ base: "none", lg: "flex" }}
-          />
-
+          /> */}
+          <Search />
           <HStack color="#fff" fontSize={"3xl"} gap="0">
             <VscAccount />
             <Box
@@ -163,24 +162,24 @@ export default function Navbar() {
               display={{ base: "none", md: "block" }}
             >
               <Box fontSize="sm" fontWeight="500">
-                {/* {data?.user ? (
-                  <>
-                    <Text fontSize="xs">{data?.user?.email}</Text>
-                    <Text onClick={() => signOut()}>Sign Out</Text>
-                  </>
-                ) : (
-                  <Link to={"/login"}>
-                    <Text>Login</Text>
-                  </Link>
-                )} */}
+                {userToken?(<Link to="/">
+                  {" "}
+                  <Text onClick={handleLogout}>Logout</Text>
+                </Link>):(<Link to="/login">
+                  {" "}
+                  <Text>SignIn</Text>
+                </Link>)}
               </Box>
             </Box>
           </HStack>
 
           <Link href="/cart">
             <Flex fontSize={"3xl"} color="#fff" alignItems="center" gap="2">
-              <FiShoppingCart />
-              <Text fontSize={"sm"}>Cart</Text>
+              <Link to="/cart">
+                <FiShoppingCart />
+                  <Text fontSize={"sm"}>Cart</Text>
+                
+              </Link>
             </Flex>
           </Link>
         </HStack>

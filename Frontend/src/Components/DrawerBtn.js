@@ -51,7 +51,7 @@ const DrawerBtn = () => {
           </DrawerHeader>
 
           <DrawerBody>
-            <Link to="/newvalentine">
+            <Link to="/products">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -60,12 +60,12 @@ const DrawerBtn = () => {
                 onClick={onClose}
                 style={{ cursor: "pointer" }}
               >
-                <Text>New valentine</Text>
+                <Text>Flowers</Text>
                 <AiOutlineRight />
               </Flex>
             </Link>
 
-            <Link to={"/flowers"}>
+            <Link to={"/products"}>
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -74,12 +74,12 @@ const DrawerBtn = () => {
                 onClick={onClose}
                 style={{ cursor: "pointer" }}
               >
-                <Text>flowers</Text>
+                <Text>Valentine</Text>
                 <AiOutlineRight />
               </Flex>
             </Link>
 
-            <Link to="/ocassion">
+            <Link to="/products">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -93,7 +93,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link to="/plants">
+            <Link to="/products">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -107,7 +107,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link to="/gifts">
+            <Link to="/products">
               <Flex
                 p="2"
                 justifyContent="space-between"

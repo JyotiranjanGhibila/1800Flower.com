@@ -29,3 +29,14 @@ export const addToCart = (product) => (dispatch) => {
   //   .then((res) => dispatch({ type: types.ADD_TO_CART_SUCCESS }))
   //   .catch((err) => dispatch({ type: types.ADD_TO_CART_FAILURE }));
 };
+export const htol = () => (dispatch) => {
+  dispatch({ type: types.GET_PRODUCTS_DATA_LOADING });
+  return axios
+    .get(
+      "https://wicked-long-underwear-slug.cyclic.app/products?sort=price&order=1"
+    )
+    .then((res) =>
+      dispatch({ type: types.HIGH_TO_LOW, payload: res.data })
+    )
+    .catch((err) => dispatch({ type: types.GET_PRODUCTS_DATA_FAILURE }));
+};

@@ -68,6 +68,7 @@ export const Login = () => {
       isClosable: true,
     });
     navigate(`/products`);
+  
   };
 
   return (
