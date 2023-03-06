@@ -9,3 +9,8 @@ const FetchSearchData = (query) => {
 };
 
 export default FetchSearchData;
+
+
+export const deleteCity = (id) => {
+  return axios.delete(`https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}`);
+};

@@ -1,34 +1,4 @@
-// import { Heading } from "@chakra-ui/react";
-// import React, { useEffect, useState } from "react";
-// // import axios from "axios";
-
-// export const Cart = () => {
-//   const [res,setRes]=useState([])
-// useEffect(() => {
-//   const getData = async () => {
-//     await fetch("https://wicked-long-underwear-slug.cyclic.app/cart/", {
-//       method: "GET",
-//       headers: {
-//         Authorization: localStorage.getItem("token"),
-//       },
-//     })
-//       .then((res) => res.json())
-//       .then((res) => {
-//         setRes(res)
-//       })
-//       .catch((err) => console.log(err));
-
-//   };
-//   getData();
-// }, []);
-//   console.log("got it",res)
-//   return (
-//     <div>
-
-//     </div>
-//   );
-// };
-
+import { deleteCity } from "./FetchSearchData";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -37,7 +7,6 @@ function Cart() {
   const [prod, setProd] = React.useState([]);
   const [count, setCount] = React.useState(1);
 
-  //adding the price
   let sum = 0;
   let arr = [];
 
@@ -48,78 +17,58 @@ function Cart() {
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
-  useEffect(() => {
-    const getData = async () => {
-      await fetch("https://wicked-long-underwear-slug.cyclic.app/cart/", {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
+  const getData = async () => {
+    await fetch("https://wicked-long-underwear-slug.cyclic.app/cart/", {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setProd(res);
       })
-        .then((res) => res.json())
-        .then((res) => {
-          setProd(res);
-        })
-        .catch((err) => console.log(err));
-    };
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
     getData();
   }, []);
   //Fetching the data:
-  // const getProd = () => {
-  //   axios
-  //     .get(`https://wicked-long-underwear-slug.cyclic.app/cart/`)
+
+  // const handleDel = async (id) => {
+  //   await fetch(
+  //     `https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}`,
+  //     {
+  //       method: "DELETE",
+  //       headers: {
+  //         Authorization: localStorage.getItem("token"),
+  //       },
+  //     }
+  //   )
+  //     .then((res) => res.json())
   //     .then((res) => {
-  //       console.log(res.data);
-  //       setProd(res.data);
+  //       // setProd(res)
+  //       getData();
+  //       console.log("del hua?", res);
   //     })
   //     .catch((err) => console.log(err));
   // };
 
-  // React.useEffect(() => {
-  //   getProd();
-  // }, []);
-
-  let handleIncrement = async (id, price, quantity) => {
-    let res = await fetch(`http://localhost:8000/cart/update/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ quantity: quantity + 1 }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
-  };
-
-  let handleDecrement = async (id, price, quantity) => {
-    let res = await fetch(`http://localhost:8000/cart/update/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ quantity: quantity - 1 }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
-  };
-
-  // const handleDelete = (id) => {
-  //   console.log(id);
-  //   let res = axios
-  //     .delete(`http://localhost:8000/cart/delete/${id}`)
-  //     .then(() => setProd(res));
-  //   getProd();
-  // };
-
+  // 64006015666e1bbf3a7c376d64006015666e1bbf3a7c376d
+     const handleDel=async(id)=>{
+      try {
+        const res = await axios.delete(`https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}}`)
+        console.log('Item successfully deleted.')
+        // setProd(res)
+        // get/Data();
+      } catch (error) {
+        alert(error)
+      }
+     }
   return (
     <>
       <div
         style={{
-          
           backgroundColor: "#3D5962",
           color: "white",
           padding: "10px 0px 10px 0px",
@@ -130,17 +79,19 @@ function Cart() {
       </div>
       <div
         style={{
-          border:"1px solid red",
+          // border:"1px solid red",
+
           dispaly: "flex",
-          flexDirection:"column",
+          flexDirection: "column",
           width: "80%",
-          marginTop: "40px",
+          marginTop: "80px",
           margin: "auto",
         }}
       >
         <div
           style={{
             marginBottom: "40px",
+            display: "flex",
             // margin: "auto",
           }}
           // className="container"
@@ -280,7 +231,7 @@ function Cart() {
                         margin: "20px",
                       }}
                     >
-                      <button>Remove</button>
+                      {/* <button onClick={() => handleDel(ele._id)}>Remove</button> */}
                     </div>
                     <div style={{ marginBottom: "20px", fontSize: "13px" }}>
                       Choose Int'l Express*** at checkout for delivery by
@@ -295,15 +246,14 @@ function Cart() {
 
           <div
             style={{
-              border: "1px solid red",
+              // border: "1px solid red",
+              boxShadow: " rgba(0, 0, 0, 0.16) 0px 1px 4px",
               width: "35%",
               marginLeft: "20px",
-              height: "auto",
+              height: "600px",
               padding: "20px 20px 10px 20px",
               marginTop: "0px",
               display: "grid",
-              justifyContent: "center",
-              alignItems: "center",
             }}
             className="right-container"
           >
@@ -408,7 +358,7 @@ function Cart() {
                 }}
               >
                 <img
-                alt="sdfgsfg"
+                  alt="sdfgsfg"
                   style={{
                     width: "80%",
                   }}
@@ -426,7 +376,7 @@ function Cart() {
             >
               <div>
                 <img
-                alt="fdsf"
+                  alt="fdsf"
                   style={{ width: "120%" }}
                   src="https://img.images-bn.com/static/redesign/srcs/images/PremMemShipCard@2x.png"
                 />

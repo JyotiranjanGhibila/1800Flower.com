@@ -107,7 +107,7 @@ const DrawerBtn = () => {
               </Flex>
             </Link>
 
-            <Link to="/products">
+            <Link to="/adminsignin">
               <Flex
                 p="2"
                 justifyContent="space-between"
@@ -116,7 +116,7 @@ const DrawerBtn = () => {
                 onClick={onClose}
                 style={{ cursor: "pointer" }}
               >
-                <Text>Gifts</Text>
+                <Text>Admin</Text>
                 <AiOutlineRight />
               </Flex>
             </Link>
