@@ -195,7 +195,7 @@ export const Products = () => {
                 </Flex>
 
                 <Flex flexDirection={"column"} alignContent="center">
-                  {/* <Rating rating={data.rating} numReviews={data.numReviews} /> */}
+                  
                   <Box display={"flex"}>
                     <BsStarFill />
                     <BsStarFill />
@@ -209,7 +209,7 @@ export const Products = () => {
                       fontWeight={400}
                       fontSize="2xl"
                     >
-                      ₹{el.price.toFixed(2)}
+                      ₹{el.price}
                     </Box>
                   </Box>
                 </Flex>
