@@ -109,7 +109,7 @@ export const Products = () => {
         </Button>
       </Box>
     
-      <SimpleGrid columns={[1, 2, 4]}>
+      <SimpleGrid columns={[1, 2, 3,4]}>
         {page.map((el, ind) => (
           <SimpleGrid
             key={ind}
@@ -128,7 +128,7 @@ export const Products = () => {
               shadow="lg"
               position="relative"
               w={'25'}
-              h={'60vh'}
+              // h={'60vh'}
             >
               {data.isNew && (
                 <Circle
@@ -182,7 +182,7 @@ export const Products = () => {
                       color={"gray.800"}
                       fontSize={"1.2em"}
                     >
-                      <chakra.a href={"#"} display={"flex"}>
+                      <chakra.a href={'/cart'} display={"flex"}>
                         <Icon
                           as={FiShoppingCart}
                           h={7}

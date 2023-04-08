@@ -33,38 +33,17 @@ function Cart() {
   useEffect(() => {
     getData();
   }, []);
-  //Fetching the data:
 
-  // const handleDel = async (id) => {
-  //   await fetch(
-  //     `https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}`,
-  //     {
-  //       method: "DELETE",
-  //       headers: {
-  //         Authorization: localStorage.getItem("token"),
-  //       },
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       // setProd(res)
-  //       getData();
-  //       console.log("del hua?", res);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // 64006015666e1bbf3a7c376d64006015666e1bbf3a7c376d
-     const handleDel=async(id)=>{
-      try {
-        const res = await axios.delete(`https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}}`)
-        console.log('Item successfully deleted.')
-        // setProd(res)
-        // get/Data();
-      } catch (error) {
-        alert(error)
-      }
-     }
+  const handleDel = async (id) => {
+    try {
+      const res = await axios.delete(
+        `https://wicked-long-underwear-slug.cyclic.app/cart/delete/${id}}`
+      );
+      console.log("Item successfully deleted.");
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <>
       <div
@@ -79,8 +58,6 @@ function Cart() {
       </div>
       <div
         style={{
-          // border:"1px solid red",
-
           dispaly: "flex",
           flexDirection: "column",
           width: "80%",
@@ -92,9 +69,7 @@ function Cart() {
           style={{
             marginBottom: "40px",
             display: "flex",
-            // margin: "auto",
           }}
-          // className="container"
         >
           <div style={{ width: "60%" }} className="left-container">
             <div style={{ marginBottom: "70px" }} className="description">
@@ -167,14 +142,6 @@ function Cart() {
                       >
                         {ele.name}
                       </p>
-                      {/* <p
-                        style={{
-                          marginBottom: "30px",
-                          fontSize: "13px",
-                        }}
-                      >
-                        {ele.price}
-                      </p> */}
                     </div>
                     <div style={{ display: "flex", gap: "15px" }}>
                       <div className="rate-div">
@@ -189,9 +156,9 @@ function Cart() {
                         <p
                           style={{
                             marginRight: "10px",
-                            // paddingTop: "8px",
+
                             fontSize: "16px",
-                            // padding: "3px 10px 4px 10px",
+
                             fontWeight: "600",
                           }}
                         >
@@ -199,10 +166,9 @@ function Cart() {
                         </p>
                         <div
                           style={{
-                            // paddingTop: "3px",
                             height: "40px",
                             width: "80px",
-                            // border: "1px solid grey",
+
                             display: "flex",
                             justifyContent: "center",
                             fontSize: "16px",
@@ -214,9 +180,9 @@ function Cart() {
                         <p
                           style={{
                             marginLeft: "10px",
-                            // paddingTop: "8px",
+
                             fontSize: "16px",
-                            // padding: "3px 10px 4px 10px",
+
                             fontWeight: "600",
                           }}
                         >
@@ -230,9 +196,7 @@ function Cart() {
                         fontSize: "13px",
                         margin: "20px",
                       }}
-                    >
-                      {/* <button onClick={() => handleDel(ele._id)}>Remove</button> */}
-                    </div>
+                    ></div>
                     <div style={{ marginBottom: "20px", fontSize: "13px" }}>
                       Choose Int'l Express*** at checkout for delivery by
                       Friday, March 3
